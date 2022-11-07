@@ -43,7 +43,7 @@ func main() {
 	// 	panic(fmt.Sprintf("mysql init failed with %+v", err))
 	// }
 
-	http.HandleFunc("/", socketHandler)
+	http.HandleFunc("/socket", socketHandler)
 	// http.HandleFunc("/", service.IndexHandler)
 	// http.HandleFunc("/api/count", service.CounterHandler)
 
