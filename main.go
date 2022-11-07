@@ -1,11 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
-	"wxcloudrun-golang/db"
-	"wxcloudrun-golang/service"
 
 	"github.com/gorilla/websocket"
 )
@@ -42,13 +39,13 @@ func socketHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	if err := db.Init(); err != nil {
-		panic(fmt.Sprintf("mysql init failed with %+v", err))
-	}
+	// if err := db.Init(); err != nil {
+	// 	panic(fmt.Sprintf("mysql init failed with %+v", err))
+	// }
 
-	http.HandleFunc("/socket", socketHandler)
-	http.HandleFunc("/", service.IndexHandler)
-	http.HandleFunc("/api/count", service.CounterHandler)
+	http.HandleFunc("/", socketHandler)
+	// http.HandleFunc("/", service.IndexHandler)
+	// http.HandleFunc("/api/count", service.CounterHandler)
 
-	log.Fatal(http.ListenAndServe(":80", nil))
+	log.Fatal(http.ListenAndServe(":443", nil))
 }
